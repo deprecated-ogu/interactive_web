@@ -1,5 +1,4 @@
 html {
-
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 }
@@ -16,6 +15,11 @@ p {
 	line-height: 1.6;
 }
 
+a {
+	color: rgb(29, 29, 31);
+	text-decoration: none;
+}
+
 .global-nav {
 	height: 44px;
 }
@@ -26,7 +30,7 @@ p {
 	align-items: center;
 	height: 100%;
 	max-width: 1000px;
-	margin: 0, auto;
+	margin: auto;
 }
 
 .local-nav {
@@ -39,6 +43,16 @@ p {
 
 }
 
-.product-name {
+.local-nav-links .product-name {
 	margin-right: auto;
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+.local-nav-links {
+	font-size: 0.9rem;
+}
+
+.local-nav-links a:not(.product-name) {
+	margin-left: 2em;
 }
