@@ -69,20 +69,24 @@
 	}
 
 	function calcValues (values, currentYOffset) {
+		let rv;
+		let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
 
+		rv = scrollRatio * (values[1] - values[0] + values[0]);
+
+		return rv;
 	}
 
 	function playAnimation() {
 		const objs = sceneInfo[currentScene].objs;
 		const values = sceneInfo[currentScene].values;
 		const currentYOffset = yOffset - prevScrollHeight;
-		console.log(currentYOffset);
+		// console.log(currentYOffset);
 
 		switch (currentScene) {
 			case 0:
-				let messageA_opacity_0 = values.messageA_opacity[0];
-				let messageA_opacity_1 = values.messageA_opacity[1];
-				calcValues(values.messageA_opacity, currentYOffset);
+				let messageA_opacity_in = calcValues(values.messageA_opacity, currentYOffset);
+				objs.messageA.style.opacity = messageA_opacity_in;
 				break;
 			case 1:
 				break;
