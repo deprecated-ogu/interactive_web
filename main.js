@@ -3,6 +3,7 @@
 	let yOffset = 0; // window.pageYOffset 대신 쓸 변수
 	let prevScrollHeight = 0;
 	let currentScene = 0;
+	let enterNewScene = false; // 새로운 scene 순간 true
 
 	const sceneInfo = [
 		{
@@ -81,7 +82,7 @@
 		const objs = sceneInfo[currentScene].objs;
 		const values = sceneInfo[currentScene].values;
 		const currentYOffset = yOffset - prevScrollHeight;
-		// console.log(currentYOffset);
+		console.log(currentScene);
 
 		switch (currentScene) {
 			case 0:
@@ -104,19 +105,21 @@
 		}
 
 		if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
-			if (currentScene === 3)
-				return;
+			enterNewScene = true;
+			if (currentScene === 3) return;
 			currentScene++;
 			document.body.setAttribute('id', `show-scene-${currentScene}`)
 
 		}
 		if (yOffset < prevScrollHeight) {
-			if (currentScene === 0)
-				return;
+			enterNewScene = true;
+			if (currentScene === 0) return;
 			currentScene--;
 			document.body.setAttribute('id', `show-scene-${currentScene}`)
 		}
 
+		if (enterNewScene) return;
+		
 		playAnimation();
 	}
 
