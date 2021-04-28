@@ -1,7 +1,7 @@
 (() => {
 
 	let yOffset = 0; // window.pageYOffset 대신 쓸 변수
-	let prevScrollHeight = 0;
+	let prevScrollHeight = 0; //
 	let currentScene = 0;
 	let enterNewScene = false; // 새로운 scene 순간 true
 
