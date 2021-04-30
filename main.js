@@ -20,7 +20,8 @@
 			},
 			values: {
 				messageA_opacity: [0, 1, { start: 0.1, end: 0.2}],
-				messageB_opacity: [0, 1, { start: 0.3, end: 0.4}]
+				messageB_opacity: [0, 1, { start: 0.3, end: 0.4}],
+				
 			}
 		},
 		{
@@ -81,8 +82,8 @@
 			const partScrollEnd = values[2].end * scrollHeight;
 			const partScrollHeight = partScrollEnd - partScrollStart;
 
-			if (currentYOffset <= partScrollStart && currentYOffset <= partScrollEnd) {
-				rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0] + values[0]);
+			if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
+				rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0]) + values[0];
 			} else if (currentYOffset < partScrollStart) {
 				rv = values[0];
 			} else if (currentYOffset > partScrollEnd) {
@@ -91,7 +92,7 @@
 			
 		}
 		else {
-			rv = scrollRatio * (values[1] - values[0] + values[0]);
+			rv = scrollRatio * (values[1] - values[0]) + values[0];
 		}
 		return rv;
 	}
@@ -100,12 +101,13 @@
 		const objs = sceneInfo[currentScene].objs;
 		const values = sceneInfo[currentScene].values;
 		const currentYOffset = yOffset - prevScrollHeight;
-		console.log(currentScene);
+		// console.log(currentScene);
 
 		switch (currentScene) {
 			case 0:
 				let messageA_opacity_in = calcValues(values.messageA_opacity, currentYOffset);
 				objs.messageA.style.opacity = messageA_opacity_in;
+				console.log(messageA_opacity_in);
 				break;
 			case 1:
 				break;
