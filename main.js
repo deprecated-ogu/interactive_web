@@ -18,7 +18,7 @@
 				messageC: document.querySelector('#scroll-section-0 .main-message.c'),
 				messageD: document.querySelector('#scroll-section-0 .main-message.d'),
 			},
-			values: {
+			values: { // 모야 여기 ㅡㅡ
 				messageA_opacity: [0, 1, { start: 0.1, end: 0.2}],
 				messageB_opacity: [0, 1, { start: 0.3, end: 0.4}],
 				
